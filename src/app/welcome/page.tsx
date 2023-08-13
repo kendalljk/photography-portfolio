@@ -41,33 +41,33 @@ const Welcome = () => {
         setCurrentPhotoIndex(newIndex);
     };
 
-    useEffect(() => {
-        function scheduleNextPhoto() {
-            if (photos.length > 1) {
-                setTimeout(() => {
-                    nextPhoto();
-                    scheduleNextPhoto();
-                }, 10000);
-            }
-        }
+useEffect(() => {
+    if (photos.length > 1) {
+        const intervalId = setInterval(() => {
+            nextPhoto();
+        }, 10000);
 
-        scheduleNextPhoto();
-    }, [photos, currentPhotoIndex]);
+        // clears interval when component unmounts, prevents excess calls
+        return () => {
+            clearInterval(intervalId);
+        };
+    }
+}, [photos, currentPhotoIndex]);
 
     const currentPhoto = photos[currentPhotoIndex];
     console.log(currentPhoto);
 
     if (loading) {
         return <div>Loading...</div>;
-    }
+    } // deleting causes error w/ "farm"
 
     if (error) {
         return <div>Error: {error}</div>;
     }
 
     return (
-        <section className="welcome-page h-screen">
-            <div className="g-0 m-0">
+        <section className="welcome-page relative h-screen">
+            <div className="relative h-screen">
                 <Image
                     className="figure-photo"
                     src={`https://farm${currentPhoto.farm}.staticflickr.com/${currentPhoto.server}/${currentPhoto.primary}_${currentPhoto.secret}_b.jpg`}
@@ -76,7 +76,11 @@ const Welcome = () => {
                     objectFit="cover"
                 />
             </div>
-            <div className="welcome-display"></div>
+            <div className="welcome-display absolute top-2/3 left-20 text-white">
+                <h1 className="text-2xl uppercase tracking-widest">Brian Koch</h1>
+                <h2 className="tracking-widest text-xl">Photography</h2>
+                <button className="bg-stone-400 px-5 py-2 mt-5 rounded-full">Galleries</button>
+            </div>
         </section>
     );
 };
