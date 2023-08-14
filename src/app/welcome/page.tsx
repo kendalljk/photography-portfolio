@@ -13,19 +13,17 @@ interface Photo {
 const Welcome = () => {
     const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
     const [photos, setPhotos] = useState<Photo[]>([]);
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     const fetchAlbums = async () => {
         try {
-            const response = await fetch("/api/albums");
+            const response = await fetch(`/api/albums?title=backgrounds`);
             const data = await response.json();
-            console.log(data);
-            setPhotos(data);
-            setLoading(false);
+            console.log("Flickr albums", data);
+          setPhotos(data);
+          console.log("Photos", photos)
         } catch (err: any) {
             setError(err?.toString() || "An error occurred");
-            setLoading(false);
         }
     };
 
@@ -41,25 +39,21 @@ const Welcome = () => {
         setCurrentPhotoIndex(newIndex);
     };
 
-useEffect(() => {
-    if (photos.length > 1) {
-        const intervalId = setInterval(() => {
-            nextPhoto();
-        }, 10000);
+    useEffect(() => {
+        if (photos.length > 1) {
+            const intervalId = setInterval(() => {
+                nextPhoto();
+            }, 10000);
 
-        // clears interval when component unmounts, prevents excess calls
-        return () => {
-            clearInterval(intervalId);
-        };
-    }
-}, [photos, currentPhotoIndex]);
+            // clears interval when component unmounts, prevents excess calls
+            return () => {
+                clearInterval(intervalId);
+            };
+        }
+    }, [photos, currentPhotoIndex]);
 
     const currentPhoto = photos[currentPhotoIndex];
     console.log(currentPhoto);
-
-    if (loading) {
-        return <div>Loading...</div>;
-    } // deleting causes error w/ "farm"
 
     if (error) {
         return <div>Error: {error}</div>;
@@ -68,18 +62,24 @@ useEffect(() => {
     return (
         <section className="welcome-page relative h-screen">
             <div className="relative h-screen">
-                <Image
-                    className="figure-photo"
-                    src={`https://farm${currentPhoto.farm}.staticflickr.com/${currentPhoto.server}/${currentPhoto.primary}_${currentPhoto.secret}_b.jpg`}
-                    alt="BK images carousel"
-                    layout="fill"
-                    objectFit="cover"
-                />
+                {currentPhoto && (
+                    <Image
+                        className="figure-photo"
+                        src={`https://farm${currentPhoto.farm}.staticflickr.com/${currentPhoto.server}/${currentPhoto.primary}_${currentPhoto.secret}_b.jpg`}
+                        alt="BK images carousel"
+                        layout="fill"
+                        objectFit="cover"
+                    />
+                )}
             </div>
             <div className="welcome-display absolute top-2/3 left-20 text-white">
-                <h1 className="text-2xl uppercase tracking-widest">Brian Koch</h1>
+                <h1 className="text-2xl uppercase tracking-widest">
+                    Brian Koch
+                </h1>
                 <h2 className="tracking-widest text-xl">Photography</h2>
-                <button className="bg-stone-400 px-5 py-2 mt-5 rounded-full">Galleries</button>
+                <button className="bg-stone-400 px-5 py-2 mt-5 rounded-full hover:bg-stone-300">
+                    Galleries
+                </button>
             </div>
         </section>
     );
