@@ -17,11 +17,9 @@ const Welcome = () => {
 
     const fetchAlbums = async () => {
         try {
-            const response = await fetch(`/api/albums?title=backgrounds`);
+            const response = await fetch(`/api/getGallery?title=backgrounds`);
             const data = await response.json();
-            console.log("Flickr albums", data);
           setPhotos(data);
-          console.log("Photos", photos)
         } catch (err: any) {
             setError(err?.toString() || "An error occurred");
         }

@@ -9,11 +9,12 @@ interface Album {
   }
 }
 
-const getSongs = async (req: NextApiRequest, res: NextApiResponse) => {
+const getGallery = async (req: NextApiRequest, res: NextApiResponse) => {
   const title = req.query.title;
 
   try {
     const response = await fetch(`${FLICKR_API}?method=flickr.photosets.getList&api_key=${FLICKR_API_KEY}&user_id=${userId}&format=json&nojsoncallback=1`);
+
     if (!response.ok) {
       throw new Error(`An error occurred: ${response.statusText}`);
     }
@@ -21,20 +22,13 @@ const getSongs = async (req: NextApiRequest, res: NextApiResponse) => {
     const data = await response.json();
     const albums = data.photosets.photoset;
 
-    // Find the album by title if the title query parameter is provided
-    const album = title ? albums.find((album: Album) => album.title._content === title) : null;
+    // Filter albums by title if the title query parameter is provided
+    const filteredAlbums = title ? albums.filter((album: Album) => album.title._content === title) : albums;
 
-    if (album) {
-      // Fetch the photos if album is provided
-      const photosResponse = await fetch(`${FLICKR_API}?method=flickr.photosets.getPhotos&api_key=${FLICKR_API_KEY}&photoset_id=${album.id}&user_id=${userId}&format=json&nojsoncallback=1`);
-      const photosData = await photosResponse.json();
-      res.json(photosData.photoset.photo);
-    } else {
-      res.json([]); // Return an empty array if no album is found
-    }
+    res.json(filteredAlbums);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-export default getSongs
+export default getGallery;

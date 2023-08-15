@@ -20,7 +20,7 @@ export default function Galleries() {
 
     const fetchAlbums = async () => {
         try {
-            const response = await fetch(`/api/albums`);
+            const response = await fetch(`/api/getGallery`);
             const data = await response.json();
             console.log("Galleries albums", data);
             setAlbums(data);
@@ -39,11 +39,14 @@ export default function Galleries() {
             <h2 className="pt-20">Galleries</h2>
             <div className="w-full flex justify-around">
                 {albums.map((album) => (
-                    <div key={album.id} className="album-item">
+                    <div
+                        key={album.id}
+                        className="flex flex-col items-center flex-grow m-2 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
+                    >
                         <Image
                             src={`https://farm${album.farm}.staticflickr.com/${album.server}/${album.primary}_${album.secret}_c.jpg`}
                             alt={album.title._content}
-                            width={200}
+                            width={400}
                             height={200}
                         />
                         <Link href={`/galleries/${album.id}`}>
