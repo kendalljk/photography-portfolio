@@ -35,7 +35,7 @@ export default function Galleries() {
     }, []);
 
     return (
-        <section className="gallery-display min-h-screen flex flex-col items-center align-middle">
+        <section className="gallery-display min-h-screen flex flex-col items-center">
             <h2 className="pt-20">Galleries</h2>
             <div className="w-full flex justify-around">
                 {albums.map((album) => (

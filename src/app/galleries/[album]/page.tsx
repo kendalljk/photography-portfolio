@@ -28,7 +28,7 @@ export default function Album({ params }: AlbumProps) {
 
     const fetchAlbum = async () => {
         try {
-            const response = await fetch(`/api/getAlbum?id=${params.album}`);
+            const response = await fetch(`/api/getAlbumById?id=${params.album}`);
             const data = await response.json();
             console.log("Galleries album", data);
             setAlbum(data);

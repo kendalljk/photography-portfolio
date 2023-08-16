@@ -4,6 +4,7 @@ const FLICKR_API_KEY = process.env.FLICKR_API_KEY;
 const userId = process.env.USER_ID;
 
 interface Album {
+    id: string;
   title: {
     _content: string;
   }
@@ -20,10 +21,18 @@ const getGallery = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const data = await response.json();
-    const albums = data.photosets.photoset;
+    const albums: Album[] = data.photosets.photoset;
 
     // Filter albums by title if the title query parameter is provided
     const filteredAlbums = title ? albums.filter((album: Album) => album.title._content === title) : albums;
+
+    if (filteredAlbums) {
+      try {
+
+      } catch (error) {
+
+      }
+    }
 
     res.json(filteredAlbums);
   } catch (error) {

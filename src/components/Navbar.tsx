@@ -8,8 +8,7 @@ function Navbar() {
     const pathname = usePathname();
     return (
         <nav
-            className="navbar fixed w-full flex top-0 z-10 border-b-2"
-            style={{ backgroundColor: "rgba(255, 255, 255, 0.5)" }}
+            className="navbar fixed w-full flex top-0 z-10 "
         >
             <div className="flex w-full justify-between my-3">
                 <div>
@@ -23,7 +22,7 @@ function Navbar() {
                         />
                     </Link>
                 </div>
-                <div className="">
+                <div className="bg-white pb-2">
                     <Link
                         href="/"
                         className={` hover:font-bold uppercase mx-3 ${

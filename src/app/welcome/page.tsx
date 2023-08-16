@@ -1,8 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-interface Photo {
+interface WelcomePhoto {
     farm: number;
     primary: string;
     server: string;
@@ -12,45 +13,47 @@ interface Photo {
 
 const Welcome = () => {
     const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
-    const [photos, setPhotos] = useState<Photo[]>([]);
+    const [welcomePhotos, setWelcomePhotos] = useState<WelcomePhoto[]>([]);
     const [error, setError] = useState<string | null>(null);
 
     const fetchAlbums = async () => {
         try {
-            const response = await fetch(`/api/getGallery?title=backgrounds`);
+            const response = await fetch(`/api/getAlbumByTitle?title=backgrounds`);
             const data = await response.json();
-          setPhotos(data);
+          setWelcomePhotos(data);
         } catch (err: any) {
             setError(err?.toString() || "An error occurred");
         }
     };
+
+  console.log(welcomePhotos)
 
     useEffect(() => {
         fetchAlbums();
     }, []);
 
     const nextPhoto = () => {
-        let newIndex = Math.floor(Math.random() * photos.length);
-        if (newIndex === currentPhotoIndex && photos.length > 1) {
-            newIndex = (newIndex + 1) % photos.length;
+        let newIndex = Math.floor(Math.random() * welcomePhotos.length);
+        if (newIndex === currentPhotoIndex && welcomePhotos.length > 1) {
+            newIndex = (newIndex + 1) % welcomePhotos.length;
         }
         setCurrentPhotoIndex(newIndex);
     };
 
     useEffect(() => {
-        if (photos.length > 1) {
+        if (welcomePhotos.length > 1) {
             const intervalId = setInterval(() => {
                 nextPhoto();
             }, 10000);
 
             // clears interval when component unmounts, prevents excess calls
-            return () => {
-                clearInterval(intervalId);
+          return () => {
+            clearInterval(intervalId);
             };
         }
-    }, [photos, currentPhotoIndex]);
+    }, [welcomePhotos, currentPhotoIndex]);
 
-    const currentPhoto = photos[currentPhotoIndex];
+    const currentPhoto = welcomePhotos[currentPhotoIndex];
     console.log(currentPhoto);
 
     if (error) {
@@ -63,7 +66,7 @@ const Welcome = () => {
                 {currentPhoto && (
                     <Image
                         className="figure-photo"
-                        src={`https://farm${currentPhoto.farm}.staticflickr.com/${currentPhoto.server}/${currentPhoto.primary}_${currentPhoto.secret}_b.jpg`}
+                        src={`https://farm${currentPhoto.farm}.staticflickr.com/${currentPhoto.server}/${currentPhoto.id}_${currentPhoto.secret}_b.jpg`}
                         alt="BK images carousel"
                         layout="fill"
                         objectFit="cover"
@@ -71,13 +74,13 @@ const Welcome = () => {
                 )}
             </div>
             <div className="welcome-display absolute top-2/3 left-20 text-white">
-                <h1 className="text-2xl uppercase tracking-widest">
+                <h1 className="text-4xl tracking-widest">
                     Brian Koch
                 </h1>
-                <h2 className="tracking-widest text-xl">Photography</h2>
-                <button className="bg-stone-400 px-5 py-2 mt-5 rounded-full hover:bg-stone-300">
+          <h2 className="tracking-widest text-2xl mb-5">Photography</h2>
+          <Link href={'/galleries'} className="bg-stone-400 px-5 py-2 rounded-full hover:bg-stone-300">
                     Galleries
-                </button>
+          </Link>
             </div>
         </section>
     );
