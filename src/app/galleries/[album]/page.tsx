@@ -3,6 +3,9 @@ import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Masonry from "react-masonry-css";
+import { useSearchParams } from "next/navigation";
+
 
 interface Album {
     farm: number;
@@ -24,11 +27,15 @@ interface AlbumProps {
 export default function Album({ params }: AlbumProps) {
     const [album, setAlbum] = useState<Album[]>([]);
     const [error, setError] = useState<string | null>(null);
-    console.log("Params", params.album);
+  console.log("Params", params.album);
+  const searchParams = useSearchParams();
+const title = searchParams.get("title");
 
     const fetchAlbum = async () => {
         try {
-            const response = await fetch(`/api/getAlbumById?id=${params.album}`);
+            const response = await fetch(
+                `/api/getAlbumById?id=${params.album}`
+            );
             const data = await response.json();
             console.log("Galleries album", data);
             setAlbum(data);
@@ -42,22 +49,33 @@ export default function Album({ params }: AlbumProps) {
         fetchAlbum();
     }, [params.album]);
 
+    const breakpointColumnsObj = {
+        default: 4,
+        1100: 3,
+        700: 2,
+        500: 1,
+    };
+
     return (
-        <section className="w-full min-h-screen flex flex-wrap justify-center">
-            {album.map((photo) => (
-                <div
-                    key={photo.id}
-                    className="flex flex-grow m-2 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5"
-                >
-                    <Image
-                        src={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
-                        alt="Photos from photo album"
-                        width={400}
-                        height={200}
-                    />
-                    <Link href={`/galleries/`}></Link>
-                </div>
-            ))}
+        <section className="w-full min-h-screen flex flex-col items-center">
+        <h2 className="pt-20">{title}</h2>
+            <Masonry
+                breakpointCols={breakpointColumnsObj}
+                className="my-masonry-grid flex w-auto"
+                columnClassName="my-masonry-grid_column"
+            >
+                {album.map((photo) => (
+                    <div key={photo.id} className="my-masonry-item m-2">
+                        <Image
+                            src={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
+                            alt="Photos from photo album"
+                            width={400}
+                            height={200}
+                        />
+                        <Link href={`/galleries/`}></Link>
+                    </div>
+                ))}
+            </Masonry>
         </section>
     );
 }

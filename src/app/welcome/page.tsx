@@ -18,15 +18,17 @@ const Welcome = () => {
 
     const fetchAlbums = async () => {
         try {
-            const response = await fetch(`/api/getAlbumByTitle?title=backgrounds`);
+            const response = await fetch(
+                `/api/getAlbumByTitle?title=backgrounds`
+            );
             const data = await response.json();
-          setWelcomePhotos(data);
+            setWelcomePhotos(data);
         } catch (err: any) {
             setError(err?.toString() || "An error occurred");
         }
     };
 
-  console.log(welcomePhotos)
+    console.log(welcomePhotos);
 
     useEffect(() => {
         fetchAlbums();
@@ -47,8 +49,8 @@ const Welcome = () => {
             }, 10000);
 
             // clears interval when component unmounts, prevents excess calls
-          return () => {
-            clearInterval(intervalId);
+            return () => {
+                clearInterval(intervalId);
             };
         }
     }, [welcomePhotos, currentPhotoIndex]);
@@ -66,7 +68,7 @@ const Welcome = () => {
                 {currentPhoto && (
                     <Image
                         className="figure-photo"
-                        src={`https://farm${currentPhoto.farm}.staticflickr.com/${currentPhoto.server}/${currentPhoto.id}_${currentPhoto.secret}_b.jpg`}
+                        src={`https://live.staticflickr.com/${currentPhoto.server}/${currentPhoto.id}_${currentPhoto.secret}_b.jpg`}
                         alt="BK images carousel"
                         layout="fill"
                         objectFit="cover"
@@ -74,13 +76,14 @@ const Welcome = () => {
                 )}
             </div>
             <div className="welcome-display absolute top-2/3 left-20 text-white">
-                <h1 className="text-4xl tracking-widest">
-                    Brian Koch
-                </h1>
-          <h2 className="tracking-widest text-2xl mb-5">Photography</h2>
-          <Link href={'/galleries'} className="bg-stone-400 px-5 py-2 rounded-full hover:bg-stone-300">
+                <h1 className="text-4xl tracking-widest">Brian Koch</h1>
+                <h2 className="tracking-widest text-2xl mb-5">Photography</h2>
+                <Link
+                    href={"/galleries"}
+                    className="bg-stone-400 px-5 py-2 rounded-full hover:bg-stone-300"
+                >
                     Galleries
-          </Link>
+                </Link>
             </div>
         </section>
     );

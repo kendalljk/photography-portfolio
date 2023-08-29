@@ -67,17 +67,25 @@ const RecentProjects = () => {
                     <AiOutlineLeft style={{ fontSize: "25px" }} />
                 </button>
                 {projects.slice(startIndex, endIndex).map((project) => (
-                    <div key={project.id} className="m-2">
-                        <div className="relative w-30 h-40 sm:w-32 sm:h-48 md:w-56 md:h-96 overflow-hidden ">
+                    <div
+                        key={project.id}
+                        className="m-2 w-1/4 h-96 lg:w-1/5 md:h-120"
+                    >
+                        <div className="relative w-full h-full overflow-hidden ">
                             <Image
-                                src={`https://farm${project.farm}.staticflickr.com/${project.server}/${project.primary}_${project.secret}_c.jpg`}
+                                src={`https://live.staticflickr.com/${project.server}/${project.primary}_${project.secret}_c.jpg`}
                                 alt={project.title._content}
                                 layout="fill"
                                 objectFit="cover"
                             />
                         </div>
-                        <Link href={`/galleries/${project.id}`}>
-                            <h4 className="project-title">
+                        <Link
+                            href={{
+                                pathname: `/galleries/${project.id}`,
+                                query: { title: project.title._content },
+                            }}
+                        >
+                            <h4 className="project-title truncate">
                                 {project.title._content}
                             </h4>
                         </Link>

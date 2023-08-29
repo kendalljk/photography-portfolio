@@ -21,10 +21,10 @@ const Bio = () => {
                         accusamus odio!
                     </p>
                     <Link
-                        href={"/galleries"}
+                        href={"/about"}
                         className="bg-stone-400 px-5 py-2 rounded-full hover:bg-stone-300 w-fit mt-5"
                     >
-                        Galleries
+                        Learn More
                     </Link>
                 </div>
                 <div>
