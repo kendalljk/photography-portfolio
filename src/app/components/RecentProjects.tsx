@@ -75,8 +75,11 @@ const RecentProjects = () => {
                             <Image
                                 src={`https://live.staticflickr.com/${project.server}/${project.primary}_${project.secret}_c.jpg`}
                                 alt={project.title._content}
-                                layout="fill"
-                                objectFit="cover"
+                                fill
+                                sizes="w-1/4 h-96 lg:w-1/5 md:h-120"
+                                style={{
+                                    objectFit: "cover",
+                                }}
                             />
                         </div>
                         <Link

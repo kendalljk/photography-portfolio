@@ -70,8 +70,11 @@ const Welcome = () => {
                         className="figure-photo"
                         src={`https://live.staticflickr.com/${currentPhoto.server}/${currentPhoto.id}_${currentPhoto.secret}_b.jpg`}
                         alt="BK images carousel"
-                        layout="fill"
-                        objectFit="cover"
+                        fill
+                        style={{
+                            objectFit: "cover",
+                        }}
+                        sizes="100vw 100vh"
                     />
                 )}
             </div>

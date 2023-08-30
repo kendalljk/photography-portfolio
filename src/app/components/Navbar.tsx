@@ -2,7 +2,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "../app/resources/Logo.png";
+import logo from "../../app/resources/Logo.png";
 
 function Navbar() {
     const pathname = usePathname();
@@ -12,15 +12,16 @@ function Navbar() {
         >
             <div className="flex w-full justify-between my-3">
                 <div>
-                    <Link href="/">
+                    <Link href="/" className="flex">
                         <Image
                             src={logo}
                             alt="B photo logo"
                             height={30}
                             width={30}
-                            className="ml-3"
+                            className="mx-3"
                         />
-                    </Link>
+            <h1>Brian Koch Photography</h1>
+            </Link>
                 </div>
                 <div className="bg-white pb-2">
                     <Link

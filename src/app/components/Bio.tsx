@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import profilePhoto from "../app/resources/BK.jpg";
+import profilePhoto from "../../app/resources/BK.jpg";
 import Link from "next/link";
 
 const Bio = () => {
