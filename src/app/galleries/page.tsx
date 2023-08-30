@@ -46,7 +46,7 @@ export default function Galleries() {
     };
 
     return (
-        <section className="gallery-display min-h-screen flex flex-col items-center justify-center w-full">
+        <section className="gallery-display min-h-screen flex flex-col items-center w-full">
             <h2 className="pt-20">Galleries</h2>
             <div className="w-full flex flex-wrap mx-auto justify-center">
                 <Masonry
