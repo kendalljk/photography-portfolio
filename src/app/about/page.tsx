@@ -5,7 +5,7 @@ export default function About() {
     return (
         <section className="about min-h-screen flex flex-col items-center py-20 overflow-auto">
             <h2 className="pb-10">About</h2>
-            <div className="w-2/3 flex">
+            <div className="w-2/3 flex lg:flex-row flex-col">
                 <div className="w-full">
                     <Image
                         id="photographer-photo"
@@ -34,8 +34,8 @@ export default function About() {
                         </ul>
                     </div>
                 </div>
-                <div className="flex flex-col items-center">
-                    <div className="w-2/3">
+                <div className="flex flex-col items-center lg:mt-0 mt-5">
+                    <div className="w-full">
                         <p>
                             {`Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, ea harum obcaecati tempora quisquam facilis nihil ipsam! Blanditiis fuga inventore, accusantium minima, ullam, fugiat ipsum debitis optio consectetur at qui! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum ab, sapiente culpa eum ipsam alias explicabo blanditiis molestias architecto aliquid, enim esse fuga, iusto facere nobis adipisci harum amet.`}
                         </p>
