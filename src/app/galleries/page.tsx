@@ -19,13 +19,14 @@ export default function Galleries() {
     const [albums, setAlbums] = useState<Album[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
+    const [page, setPage] = useState<number>(1);
 
-    const fetchAlbums = async () => {
+    const fetchAlbums = async (page: number) => {
         try {
-            const response = await fetch(`/api/getGallery`);
+            const response = await fetch(`/api/getGallery?page=${page}`);
             const data = await response.json();
             console.log("Galleries albums", data);
-            setAlbums(data);
+            setAlbums((prevAlbums) => [...prevAlbums, ...data]);
             setLoading(false);
         } catch (err: any) {
             setError(err?.toString() || "An error occurred");
@@ -35,7 +36,7 @@ export default function Galleries() {
     console.log("Albums", albums);
 
     useEffect(() => {
-        fetchAlbums();
+        fetchAlbums(page);
     }, []);
 
     const breakpointColumnsObj = {
@@ -43,6 +44,12 @@ export default function Galleries() {
         1100: 3,
         700: 2,
         500: 1,
+    };
+
+    const loadMore = () => {
+        const newPage = page + 1;
+        setPage(newPage);
+        fetchAlbums(newPage);
     };
 
     return (
@@ -60,10 +67,11 @@ export default function Galleries() {
                             className="gallery-item flex flex-col px-2"
                         >
                             <div className="flex justify-center mb-5">
-                                <Link className="text-center font-semibold"
+                                <Link
+                                    className="text-center font-semibold"
                                     href={{
-                                      pathname: `/galleries/${album.id}`,
-                                      query: { title: album.title._content },
+                                        pathname: `/galleries/${album.id}`,
+                                        query: { title: album.title._content },
                                     }}
                                 >
                                     <Image
@@ -72,15 +80,21 @@ export default function Galleries() {
                                         width={500}
                                         height={300}
                                     />
-                                        <h4 className="album-title">
-                                            {album.title._content}
-                                        </h4>
+                                    <h4 className="album-title">
+                                        {album.title._content}
+                                    </h4>
                                 </Link>
                             </div>
                         </div>
                     ))}
                 </Masonry>
             </div>
+            <button
+                onClick={loadMore}
+                className="bg-stone-400 px-5 py-2 rounded-full hover:bg-stone-300 mb-5"
+            >
+                Load More
+            </button>
         </section>
     );
 }
