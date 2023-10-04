@@ -17,13 +17,13 @@ function Navbar() {
                             src={logo}
                             alt="B photo logo"
                             height={30}
-                            width={40}
+                            width={30}
                             className="mx-5"
                         />
-            <h1 className="text-xl">Brian Koch Photography</h1>
+            <h1 className="text-lg">Brian Koch Photography</h1>
             </Link>
                 </div>
-                <div className="bg-white pb-2 text-xl mr-5">
+                <div className="bg-white pb-2 text-lg mr-5">
                     <Link
                         href="/"
                         className={` hover:font-bold uppercase mx-3 ${

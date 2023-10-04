@@ -57,7 +57,7 @@ export default function Album({ params }: AlbumProps) {
 
     return (
         <section className="w-full min-h-screen flex flex-col items-center">
-            <h2 className="pt-20 text-3xl mb-5">{title}</h2>
+            <h2 className="pt-20 text-xl mb-5">{title}</h2>
             <Masonry
                 breakpointCols={breakpointColumnsObj}
                 className="my-masonry-grid flex w-auto"

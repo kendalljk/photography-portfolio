@@ -47,7 +47,7 @@ export default function Galleries() {
 
     return (
         <section className="gallery-display min-h-screen flex flex-col items-center w-full">
-            <h2 className="pt-20 text-3xl mb-5">Galleries</h2>
+            <h2 className="pt-20 text-xl mb-5">Galleries</h2>
             <div className="w-full flex flex-wrap mx-auto justify-center">
                 <Masonry
                     breakpointCols={breakpointColumnsObj}

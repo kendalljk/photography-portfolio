@@ -13,20 +13,20 @@ const Footer = () => {
                     className="m-5"
                 >
                     <FaFacebookSquare
-                        style={{ color: "white", fontSize: "35px" }}
+                        style={{ color: "white", fontSize: "25px" }}
                     />
                 </a>
                 <a href={`mailto:kendalljunekoch@gmail.com`} className="m-5">
-                    <GrMail style={{ color: "white", fontSize: "35px" }} />
+                    <GrMail style={{ color: "white", fontSize: "25px" }} />
                 </a>
                 <a
                     href="https://flickr.com/photos/brian330inafrica"
                     className="m-5"
                 >
-                    <FaFlickr style={{ color: "white", fontSize: "35px" }} />
+                    <FaFlickr style={{ color: "white", fontSize: "25px" }} />
                 </a>
             </div>
-            <div className="text-center italic text-zinc-700 text-xl font-light my-5">
+            <div className="text-center italic text-zinc-700 text-lg font-light my-5">
                 Copyright © Brian Koch Photography. Contents cannot be used in
                 any way without written permission
             </div>
