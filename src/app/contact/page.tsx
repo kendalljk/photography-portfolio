@@ -2,8 +2,8 @@
 import React from "react";
 import { useForm, ValidationError } from "@formspree/react";
 export default function ContactForm() {
-  const FORMSPREE_ID = process.env.FORMSPREE_ID;
-  console.log(FORMSPREE_ID)
+    const FORMSPREE_ID = process.env.FORMSPREE_ID;
+    console.log(FORMSPREE_ID);
     const [state, handleSubmit] = useForm(`${FORMSPREE_ID}`);
     if (state.succeeded) {
         return (
@@ -36,7 +36,6 @@ export default function ContactForm() {
                         id="telephone"
                         type="tel"
                         name="telephone"
-                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                         required
                         className="block border-2 w-full mb-5"
                     />
