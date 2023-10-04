@@ -2,7 +2,9 @@
 import React from "react";
 import { useForm, ValidationError } from "@formspree/react";
 export default function ContactForm() {
-    const [state, handleSubmit] = useForm("mleybqyo");
+  const FORMSPREE_ID = process.env.FORMSPREE_ID;
+  console.log(FORMSPREE_ID)
+    const [state, handleSubmit] = useForm(`${FORMSPREE_ID}`);
     if (state.succeeded) {
         return (
             <section className="min-h-screen w-full">

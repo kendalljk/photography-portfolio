@@ -64,8 +64,10 @@ export default function Photo({ params }: PhotoProps) {
                         <Image
                             src={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`}
                             alt="Photos from photo album"
-                            width={800}
-                            height={600}
+                            fill
+                            style={{
+                                objectFit: "contain",
+                            }}
                         />
                     </div>
                     {photo.dates.taken && <h3>{photo.dates.taken}</h3>}
