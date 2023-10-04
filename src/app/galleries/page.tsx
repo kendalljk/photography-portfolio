@@ -47,7 +47,7 @@ export default function Galleries() {
 
     return (
         <section className="gallery-display min-h-screen flex flex-col items-center w-full">
-            <h2 className="pt-20">Galleries</h2>
+            <h2 className="pt-20 text-3xl mb-5">Galleries</h2>
             <div className="w-full flex flex-wrap mx-auto justify-center">
                 <Masonry
                     breakpointCols={breakpointColumnsObj}
@@ -59,19 +59,19 @@ export default function Galleries() {
                             key={album.id}
                             className="gallery-item flex flex-col px-2"
                         >
-                            <Image
-                                src={`https://live.staticflickr.com/${album.server}/${album.primary}_${album.secret}_c.jpg`}
-                                alt={album.title._content}
-                                width={500}
-                                height={300}
-                            />
-                            <div className="flex justify-center">
-                                <Link
+                            <div className="flex justify-center mb-5">
+                                <Link className="text-center font-semibold"
                                     href={{
-                                        pathname: `/galleries/${album.id}`,
-                                        query: { title: album.title._content },
+                                      pathname: `/galleries/${album.id}`,
+                                      query: { title: album.title._content },
                                     }}
                                 >
+                                    <Image
+                                        src={`https://live.staticflickr.com/${album.server}/${album.primary}_${album.secret}_c.jpg`}
+                                        alt={album.title._content}
+                                        width={500}
+                                        height={300}
+                                    />
                                         <h4 className="album-title">
                                             {album.title._content}
                                         </h4>

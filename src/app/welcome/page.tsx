@@ -79,11 +79,11 @@ const Welcome = () => {
                 )}
             </div>
             <div className="welcome-display absolute top-2/3 left-20 text-white">
-                <h1 className="text-4xl tracking-widest">Brian Koch</h1>
-                <h2 className="tracking-widest text-2xl mb-5">Photography</h2>
+                <h1 className="text-5xl tracking-widest">Brian Koch</h1>
+                <h2 className="tracking-widest text-3xl mb-5">Photography</h2>
                 <Link
                     href={"/galleries"}
-                    className="bg-stone-400 px-5 py-2 rounded-full hover:bg-stone-300"
+                    className="bg-stone-400 px-5 py-2 rounded-full hover:bg-stone-300 text-xl"
                 >
                     Galleries
                 </Link>

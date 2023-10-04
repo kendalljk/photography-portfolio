@@ -7,7 +7,7 @@ export default function ContactForm() {
         return (
             <section className="min-h-screen w-full">
                 <div className="pt-20">
-                    <p>{`Thanks for reaching out! I'll get back to you as soon as I can.`}</p>
+                    <p>{`Thanks for reaching out! I'll reach out to you via email soon.`}</p>
                 </div>
             </section>
         );

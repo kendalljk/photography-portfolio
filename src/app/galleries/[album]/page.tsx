@@ -6,7 +6,6 @@ import Image from "next/image";
 import Masonry from "react-masonry-css";
 import { useSearchParams } from "next/navigation";
 
-
 interface Album {
     farm: number;
     primary: string;
@@ -27,9 +26,9 @@ interface AlbumProps {
 export default function Album({ params }: AlbumProps) {
     const [album, setAlbum] = useState<Album[]>([]);
     const [error, setError] = useState<string | null>(null);
-  console.log("Params", params.album);
-  const searchParams = useSearchParams();
-const title = searchParams.get("title");
+    console.log("Params", params.album);
+    const searchParams = useSearchParams();
+    const title = searchParams.get("title");
 
     const fetchAlbum = async () => {
         try {
@@ -58,7 +57,7 @@ const title = searchParams.get("title");
 
     return (
         <section className="w-full min-h-screen flex flex-col items-center">
-        <h2 className="pt-20">{title}</h2>
+            <h2 className="pt-20 text-3xl mb-5">{title}</h2>
             <Masonry
                 breakpointCols={breakpointColumnsObj}
                 className="my-masonry-grid flex w-auto"
@@ -66,13 +65,19 @@ const title = searchParams.get("title");
             >
                 {album.map((photo) => (
                     <div key={photo.id} className="my-masonry-item m-2">
-                        <Image
-                            src={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
-                            alt="Photos from photo album"
-                            width={400}
-                            height={200}
-                        />
-                        <Link href={`/galleries/`}></Link>
+                        <Link
+                            className="text-center font-semibold"
+                            href={{
+                                pathname: `/galleries/album/${photo.id}`,
+                            }}
+                        >
+                            <Image
+                                src={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
+                                alt="Photos from photo album"
+                                width={400}
+                                height={200}
+                            />
+                        </Link>
                     </div>
                 ))}
             </Masonry>

@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+/*import type { NextApiRequest, NextApiResponse } from 'next';
 const FLICKR_API = "https://api.flickr.com/services/rest/";
 const FLICKR_API_KEY = process.env.FLICKR_API_KEY;
 const userId = process.env.USER_ID;
@@ -43,3 +43,4 @@ const fetchShowcasePhotos = async () => {
         setError(err?.toString() || "An error occurred");
     }
 };
+*/
