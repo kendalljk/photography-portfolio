@@ -7,9 +7,7 @@ import logo from "../../app/resources/Logo.png";
 function Navbar() {
     const pathname = usePathname();
     return (
-        <nav
-            className="navbar fixed w-full flex top-0 z-10 "
-        >
+        <nav className="navbar fixed w-full flex top-0 z-10 ">
             <div className="flex w-full justify-between items-center my-3">
                 <div>
                     <Link href="/" className="flex">
@@ -20,10 +18,12 @@ function Navbar() {
                             width={30}
                             className="mx-5"
                         />
-            <h1 className="text-lg">Brian Koch Photography</h1>
-            </Link>
+                        <h1 className="hidden lg:block text-xl">
+                            Brian Koch Photography
+                        </h1>
+                    </Link>
                 </div>
-                <div className="bg-white pb-2 text-lg mr-5">
+                <div className="bg-white pb-2 lg:text-lg text-sm mr-5">
                     <Link
                         href="/"
                         className={` hover:font-bold uppercase mx-3 ${
