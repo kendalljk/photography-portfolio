@@ -28,7 +28,7 @@ export default function Album({ params }: AlbumProps) {
     const [error, setError] = useState<string | null>(null);
     console.log("Params", params.album);
     const searchParams = useSearchParams();
-    const title = searchParams.get("title");
+    const title = searchParams?.get("title") || "";
 
     const fetchAlbum = async () => {
         try {

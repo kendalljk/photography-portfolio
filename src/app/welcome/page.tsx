@@ -34,6 +34,7 @@ const Welcome = () => {
         fetchAlbums();
     }, []);
 
+    useEffect(() => {
     const nextPhoto = () => {
         let newIndex = Math.floor(Math.random() * welcomePhotos.length);
         if (newIndex === currentPhotoIndex && welcomePhotos.length > 1) {
@@ -42,7 +43,6 @@ const Welcome = () => {
         setCurrentPhotoIndex(newIndex);
     };
 
-    useEffect(() => {
         if (welcomePhotos.length > 1) {
             const intervalId = setInterval(() => {
                 nextPhoto();

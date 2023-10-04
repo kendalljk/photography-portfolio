@@ -32,19 +32,20 @@ export default function Photo({ params }: PhotoProps) {
     console.log("Params", params.photo);
     const searchParams = useSearchParams();
 
-    const fetchPhoto = async () => {
-        try {
-            const response = await fetch(`/api/getPhoto?id=${params.photo}`);
-            const data = await response.json();
-            console.log("Galleries album", data);
-            setPhoto(data);
-        } catch (err: any) {
-            setError(err?.toString() || "An error occurred");
-        }
-    };
-    console.log("Album photo", photo);
-
     useEffect(() => {
+        const fetchPhoto = async () => {
+            try {
+                const response = await fetch(
+                    `/api/getPhoto?id=${params.photo}`
+                );
+                const data = await response.json();
+                console.log("Galleries album", data);
+                setPhoto(data);
+            } catch (err: any) {
+                setError(err?.toString() || "An error occurred");
+            }
+        };
+
         fetchPhoto();
     }, [params.photo]);
 
