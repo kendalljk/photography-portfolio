@@ -34,7 +34,7 @@ export default function About() {
                         </ul>
                     </div>
                 </div>
-                <div className="flex flex-col items-center lg:mt-0 mt-5">
+                <div className="flex flex-col items-center mx-5 lg:mt-0 mt-5">
                     <div className="w-full">
                         <p>
                             {`Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, ea harum obcaecati tempora quisquam facilis nihil ipsam! Blanditiis fuga inventore, accusantium minima, ullam, fugiat ipsum debitis optio consectetur at qui! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum ab, sapiente culpa eum ipsam alias explicabo blanditiis molestias architecto aliquid, enim esse fuga, iusto facere nobis adipisci harum amet.`}
