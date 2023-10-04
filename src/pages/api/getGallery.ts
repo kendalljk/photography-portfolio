@@ -36,9 +36,13 @@ const getGallery = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     res.json(filteredAlbums);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+} catch (error) {
+    if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+    } else {
+        res.status(500).json({ error: 'An unexpected error occurred' });
+    }
+}
 };
 
 export default getGallery;
