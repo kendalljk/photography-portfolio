@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function About() {
     return (
         <section className="about min-h-screen flex flex-col items-center py-20 overflow-auto">
-            <h2 className="pb-10">About</h2>
+            <h2 className="pb-10 text-xl">About</h2>
             <div className="w-2/3 flex lg:flex-row flex-col">
                 <div className="w-full">
                     <Image

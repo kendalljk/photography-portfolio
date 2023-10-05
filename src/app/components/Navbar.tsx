@@ -15,10 +15,16 @@ function Navbar() {
                             src={logo}
                             alt="B photo logo"
                             height={30}
-                            width={30}
+                            width={40}
                             className="mx-5"
                         />
-                        <h1 className="hidden lg:block text-xl">
+                        <h1
+                            className={` lg:block hidden text-xl text-black ${
+                                pathname === "/"
+                                    ? "invisible"
+                                    : ""
+                            }`}
+                        >
                             Brian Koch Photography
                         </h1>
                     </Link>

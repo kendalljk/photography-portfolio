@@ -35,13 +35,13 @@ const Welcome = () => {
     }, []);
 
     useEffect(() => {
-    const nextPhoto = () => {
-        let newIndex = Math.floor(Math.random() * welcomePhotos.length);
-        if (newIndex === currentPhotoIndex && welcomePhotos.length > 1) {
-            newIndex = (newIndex + 1) % welcomePhotos.length;
-        }
-        setCurrentPhotoIndex(newIndex);
-    };
+        const nextPhoto = () => {
+            let newIndex = Math.floor(Math.random() * welcomePhotos.length);
+            if (newIndex === currentPhotoIndex && welcomePhotos.length > 1) {
+                newIndex = (newIndex + 1) % welcomePhotos.length;
+            }
+            setCurrentPhotoIndex(newIndex);
+        };
 
         if (welcomePhotos.length > 1) {
             const intervalId = setInterval(() => {
@@ -79,8 +79,12 @@ const Welcome = () => {
                 )}
             </div>
             <div className="welcome-display absolute top-2/3 left-20 text-white">
-                <h1 className="text-3xl tracking-widest">Brian Koch</h1>
-                <h2 className="tracking-widest text-2xl mb-5">Photography</h2>
+                <h1 className="text-3xl tracking-widest drop-shadow">
+                    Brian Koch
+                </h1>
+                <h2 className="tracking-widest text-2xl mb-5 drop-shadow">
+                    Photography
+                </h2>
                 <Link
                     href={"/galleries"}
                     className="bg-stone-400 px-5 py-2 rounded-full hover:bg-stone-300"

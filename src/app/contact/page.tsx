@@ -14,15 +14,15 @@ export default function ContactForm() {
     }
     return (
         <section className="min-h-screen w-full flex justify-center">
-            <div className="flex flex-col pt-20 w-1/2">
-                <h2 className="mx-auto mb-5">Contact Me</h2>
+            <div className="flex flex-col pt-20 lg:w-1/3 w-full px-10">
+                <h2 className="mx-auto mb-5 text-xl">Contact Me</h2>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="email">Email Address:</label>
                     <input
                         id="email"
                         type="email"
                         name="email"
-                        className="block border-2 w-full mb-5"
+                        className="block border-2 w-full mb-5 p-1"
                     />
                     <ValidationError
                         prefix="Email"
@@ -35,7 +35,7 @@ export default function ContactForm() {
                         type="tel"
                         name="telephone"
                         required
-                        className="block border-2 w-full mb-5"
+                        className="block border-2 w-full mb-5 p-1"
                     />
                     <ValidationError
                         prefix="telephone"
@@ -46,7 +46,7 @@ export default function ContactForm() {
                     <textarea
                         id="message"
                         name="message"
-                        className="block border-2 w-full mb-5 h-1/2"
+                        className="block border-2 w-full mb-5 h-1/2 p-1"
                     />
                     <ValidationError
                         prefix="Message"
@@ -56,7 +56,7 @@ export default function ContactForm() {
                     <button
                         type="submit"
                         disabled={state.submitting}
-                        className="block border-2 mx-auto"
+                        className="block border-2 mx-auto bg-stone-400 px-5 py-2 rounded-full hover:bg-stone-300"
                     >
                         Submit
                     </button>
