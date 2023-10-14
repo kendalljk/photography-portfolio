@@ -29,7 +29,6 @@ interface PhotoProps {
 export default function Photo({ params }: PhotoProps) {
     const [photo, setPhoto] = useState<Photo | null>(null);
     const [error, setError] = useState<string | null>(null);
-    console.log("Params", params.photo);
     const searchParams = useSearchParams();
 
     useEffect(() => {
@@ -39,7 +38,6 @@ export default function Photo({ params }: PhotoProps) {
                     `/api/getPhoto?id=${params.photo}`
                 );
                 const data = await response.json();
-                console.log("Galleries album", data);
                 setPhoto(data);
             } catch (err: any) {
                 setError(err?.toString() || "An error occurred");
@@ -60,9 +58,9 @@ export default function Photo({ params }: PhotoProps) {
         <section className="w-full min-h-screen flex flex-col items-center justify-center">
             {photo && (
                 <>
-                    <div className="w-full flex justify-center">
+                    <div className="w-full mt-20 flex justify-center">
                         <Image
-                            src={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`}
+                            src={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
                             alt="Photos from photo album"
                             fill
                             style={{

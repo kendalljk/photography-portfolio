@@ -20,24 +20,24 @@ export default function Galleries() {
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [page, setPage] = useState<number>(1);
+    const [hasMore, setHasMore] = useState(true);
 
     const fetchAlbums = async (page: number) => {
         try {
             const response = await fetch(`/api/getGallery?page=${page}`);
             const data = await response.json();
-            console.log("Galleries albums", data);
-            setAlbums((prevAlbums) => [...prevAlbums, ...data]);
+            setHasMore(data.hasMore);
+            setAlbums((prevAlbums) => [...prevAlbums, ...data.albums]);
             setLoading(false);
         } catch (err: any) {
             setError(err?.toString() || "An error occurred");
             setLoading(false);
         }
     };
-    console.log("Albums", albums);
 
     useEffect(() => {
         fetchAlbums(page);
-    }, []);
+    }, [page]);
 
     const breakpointColumnsObj = {
         default: 4,
@@ -49,7 +49,6 @@ export default function Galleries() {
     const loadMore = () => {
         const newPage = page + 1;
         setPage(newPage);
-        fetchAlbums(newPage);
     };
 
     return (
@@ -89,12 +88,14 @@ export default function Galleries() {
                     ))}
                 </Masonry>
             </div>
-            <button
-                onClick={loadMore}
-                className="bg-stone-400 px-5 py-2 rounded-full hover:bg-stone-300 mb-5"
-            >
-                Load More
-            </button>
+            {hasMore && (
+                <button
+                    onClick={loadMore}
+                    className="bg-stone-400 px-5 py-2 rounded-full hover:bg-stone-300 mb-5"
+                >
+                    Load More
+                </button>
+            )}
         </section>
     );
 }

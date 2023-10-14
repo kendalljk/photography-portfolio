@@ -26,27 +26,32 @@ interface AlbumProps {
 export default function Album({ params }: AlbumProps) {
     const [album, setAlbum] = useState<Album[]>([]);
     const [error, setError] = useState<string | null>(null);
-    console.log("Params", params.album);
+    const [page, setPage] = useState<number>(1);
+    const [hasMore, setHasMore] = useState(true);
     const searchParams = useSearchParams();
     const title = searchParams?.get("title") || "";
 
-    const fetchAlbum = async () => {
+    const fetchAlbum = async (page: number) => {
         try {
             const response = await fetch(
-                `/api/getAlbumById?id=${params.album}`
+                `/api/getAlbumById?id=${params.album}&page=${page}`
             );
             const data = await response.json();
-            console.log("Galleries album", data);
-            setAlbum(data);
+            setHasMore(data.hasMore);
+            setAlbum((prevAlbum) => [...prevAlbum, ...data.photos]);
         } catch (err: any) {
             setError(err?.toString() || "An error occurred");
         }
     };
-    console.log("Album photos", album);
 
     useEffect(() => {
-        fetchAlbum();
-    }, [params.album]);
+        fetchAlbum(page);
+    }, [params.album, page]);
+
+    const loadMore = () => {
+        const newPage = page + 1;
+        setPage(newPage);
+    };
 
     const breakpointColumnsObj = {
         default: 4,
@@ -81,6 +86,14 @@ export default function Album({ params }: AlbumProps) {
                     </div>
                 ))}
             </Masonry>
+            {hasMore && (
+                <button
+                    onClick={loadMore}
+                    className="bg-stone-400 px-5 py-2 rounded-full hover:bg-stone-300 mb-5"
+                >
+                    Load More
+                </button>
+            )}
         </section>
     );
 }

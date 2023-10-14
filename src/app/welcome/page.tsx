@@ -28,8 +28,6 @@ const Welcome = () => {
         }
     };
 
-    console.log(welcomePhotos);
-
     useEffect(() => {
         fetchAlbums();
     }, []);
@@ -56,8 +54,6 @@ const Welcome = () => {
     }, [welcomePhotos, currentPhotoIndex]);
 
     const currentPhoto = welcomePhotos[currentPhotoIndex];
-    console.log(currentPhoto);
-
     if (error) {
         return <div>Error: {error}</div>;
     }
@@ -74,15 +70,14 @@ const Welcome = () => {
                         style={{
                             objectFit: "cover",
                         }}
-                        sizes="100vw 100vh"
                     />
                 )}
             </div>
             <div className="welcome-display absolute top-2/3 left-20 text-white">
-                <h1 className="text-3xl tracking-widest drop-shadow">
+                <h1 className="text-5xl tracking-widest drop-shadow">
                     Brian Koch
                 </h1>
-                <h2 className="tracking-widest text-2xl mb-5 drop-shadow">
+                <h2 className="tracking-widest text-4xl mb-5 drop-shadow">
                     Photography
                 </h2>
                 <Link

@@ -4,27 +4,28 @@ const FLICKR_API_KEY = process.env.FLICKR_API_KEY;
 const userId = process.env.USER_ID;
 
 interface Album {
-  id: string;
+    id: string;
+  title: {
+    _content: string;
+  }
 }
 
-const getAlbum = async (req: NextApiRequest, res: NextApiResponse) => {
+const getRecents = async (req: NextApiRequest, res: NextApiResponse) => {
+  const title = req.query.title;
   const page = Number(req.query.page) || 1;
-  const perPage = 50
-
-
 
   try {
-    const albumId = req.query.id as string;
-    const response = await fetch(`${FLICKR_API}?method=flickr.photosets.getPhotos&api_key=${FLICKR_API_KEY}&photoset_id=${albumId}&user_id=${userId}&format=json&nojsoncallback=1&per_page=${perPage}&page=${page}`);
+    const response = await fetch(`${FLICKR_API}?method=flickr.photosets.getList&api_key=${FLICKR_API_KEY}&user_id=${userId}&format=json&nojsoncallback=1&per_page=50&page=${page}`)
+
     if (!response.ok) {
       throw new Error(`An error occurred: ${response.statusText}`);
     }
 
     const data = await response.json();
-    const photos = data.photoset.photo;
-    const hasMore = data.photoset.total > page * perPage;
+    const albums: Album[] = data.photosets.photoset;
 
-    res.status(200).json({photos, hasMore});
+
+    res.json(albums);
 } catch (error) {
     if (error instanceof Error) {
         res.status(500).json({ error: error.message });
@@ -34,4 +35,4 @@ const getAlbum = async (req: NextApiRequest, res: NextApiResponse) => {
 }
 };
 
-export default getAlbum
+export default getRecents;

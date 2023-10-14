@@ -26,7 +26,7 @@ const Footer = () => {
                     <FaFlickr style={{ color: "white", fontSize: "25px" }} />
                 </a>
             </div>
-            <div className="text-center italic text-zinc-700 text-lg font-light my-5">
+            <div className="text-center italic text-sm text-zinc-700 text-lg font-light my-5">
                 Copyright © Brian Koch Photography. Contents cannot be used in
                 any way without written permission
             </div>

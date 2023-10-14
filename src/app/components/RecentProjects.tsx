@@ -26,16 +26,15 @@ const RecentProjects = () => {
 
     const fetchProjects = async () => {
         try {
-            const response = await fetch(`/api/getGallery`);
+            const response = await fetch(`/api/getRecents`);
             const data = await response.json();
-            console.log("Galleries Projects", data);
+
             setProjects(data);
             setTotalPages(Math.ceil(data.length / ITEMS_PER_PAGE));
         } catch (err: any) {
             setError(err?.toString() || "An error occurred");
         }
     };
-    console.log("Projects", projects);
 
     const handleNextPage = () => {
         if (currentPage < totalPages) {

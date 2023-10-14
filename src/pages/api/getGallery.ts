@@ -5,7 +5,7 @@ const userId = process.env.USER_ID;
 
 interface Album {
     id: string;
-  title: {
+    title: {
     _content: string;
   }
 }
@@ -13,9 +13,10 @@ interface Album {
 const getGallery = async (req: NextApiRequest, res: NextApiResponse) => {
   const title = req.query.title;
   const page = Number(req.query.page) || 1;
+  const perPage = 50
 
   try {
-    const response = await fetch(`${FLICKR_API}?method=flickr.photosets.getList&api_key=${FLICKR_API_KEY}&user_id=${userId}&format=json&nojsoncallback=1&per_page=50&page=${page}`)
+    const response = await fetch(`${FLICKR_API}?method=flickr.photosets.getList&api_key=${FLICKR_API_KEY}&user_id=${userId}&format=json&nojsoncallback=1&per_page=${perPage}&page=${page}`)
 
     if (!response.ok) {
       throw new Error(`An error occurred: ${response.statusText}`);
@@ -26,16 +27,12 @@ const getGallery = async (req: NextApiRequest, res: NextApiResponse) => {
 
     // Filter albums by title if the title query parameter is provided
     const filteredAlbums = title ? albums.filter((album: Album) => album.title._content === title) : albums;
+    const hasMore = data.photosets.total > page * perPage;
 
-    if (filteredAlbums) {
-      try {
-
-      } catch (error) {
-
-      }
-    }
-
-    res.json(filteredAlbums);
+        res.json({
+            albums: filteredAlbums,
+            hasMore
+        });
 } catch (error) {
     if (error instanceof Error) {
         res.status(500).json({ error: error.message });
