@@ -29,7 +29,7 @@ function Navbar() {
                         </h1>
                     </Link>
                 </div>
-                <div className="bg-white pb-2 lg:text-lg text-sm mr-5">
+                <div className="bg-white pb-2 lg:text-lg text-sm lg:mr-5">
                     <Link
                         href="/"
                         className={` hover:font-bold uppercase mx-3 ${

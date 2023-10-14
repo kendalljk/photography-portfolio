@@ -59,21 +59,21 @@ const Welcome = () => {
     }
 
     return (
-        <section className="welcome-page relative h-screen">
-            <div className="relative h-screen">
+        <section className="w-full relative min-h-screen">
+            <div className="relative">
                 {currentPhoto && (
                     <img
-                        className="w-full h-full block"
+                        className="w-full h-screen block"
                         src={`https://live.staticflickr.com/${currentPhoto.server}/${currentPhoto.id}_${currentPhoto.secret}_b.jpg`}
                         alt="BK images carousel"
                     />
                 )}
             </div>
             <div className="welcome-display absolute top-2/3 left-20 text-white">
-                <h1 className="text-5xl tracking-widest drop-shadow">
+                <h1 className="text-2xl lg:text-5xl tracking-widest drop-shadow">
                     Brian Koch
                 </h1>
-                <h2 className="tracking-widest text-4xl mb-5 drop-shadow">
+                <h2 className="text-xl lg:text-5xl tracking-widest text-4xl mb-5 drop-shadow">
                     Photography
                 </h2>
                 <Link
