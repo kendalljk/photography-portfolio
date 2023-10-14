@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import Image from "next/image";
+//import Image from "next/image";
 import Masonry from "react-masonry-css";
 
 interface Album {
@@ -73,7 +73,7 @@ export default function Galleries() {
                                         query: { title: album.title._content },
                                     }}
                                 >
-                                    <Image
+                                    <img
                                         src={`https://live.staticflickr.com/${album.server}/${album.primary}_${album.secret}_c.jpg`}
                                         alt={album.title._content}
                                         width={500}

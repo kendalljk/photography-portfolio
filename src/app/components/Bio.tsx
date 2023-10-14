@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "next/image";
+//import Image from "next/image";
 import profilePhoto from "../../app/resources/BK.jpg";
 import Link from "next/link";
 
@@ -28,8 +28,8 @@ const Bio = () => {
                     </Link>
                 </div>
                 <div>
-                    <Image
-                        src={profilePhoto}
+                    <img
+                        src='../../app/resources/BK.png'
                         alt="Brian Koch photographer photo"
                         width={600}
                         height={400}

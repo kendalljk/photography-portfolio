@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
+//import Image from "next/image";
 import Link from "next/link";
 
 interface WelcomePhoto {
@@ -62,14 +62,10 @@ const Welcome = () => {
         <section className="welcome-page relative h-screen">
             <div className="relative h-screen">
                 {currentPhoto && (
-                    <Image
-                        className="figure-photo"
+                    <img
+                        className="w-full h-full block"
                         src={`https://live.staticflickr.com/${currentPhoto.server}/${currentPhoto.id}_${currentPhoto.secret}_b.jpg`}
                         alt="BK images carousel"
-                        fill
-                        style={{
-                            objectFit: "cover",
-                        }}
                     />
                 )}
             </div>

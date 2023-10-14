@@ -1,18 +1,18 @@
 "use client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
-import logo from "../../app/resources/Logo.png";
+//import Image from "next/image";
+//import logo from "../../app/resources/Logo.png";
 
 function Navbar() {
     const pathname = usePathname();
     return (
         <nav className="navbar fixed w-full flex top-0 z-10 ">
-            <div className="flex w-full justify-between items-center my-3">
+            <div className="flex w-full justify-between items-center ">
                 <div>
                     <Link href="/" className="flex">
-                        <Image
-                            src={logo}
+                        <img
+                            src='../../app/resources/Logo.png'
                             alt="B photo logo"
                             height={30}
                             width={40}

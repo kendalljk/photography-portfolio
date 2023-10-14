@@ -2,7 +2,7 @@
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
+//import Image from "next/image";
 import Masonry from "react-masonry-css";
 import { useSearchParams } from "next/navigation";
 
@@ -76,7 +76,7 @@ export default function Album({ params }: AlbumProps) {
                                 pathname: `/galleries/album/${photo.id}`,
                             }}
                         >
-                            <Image
+                            <img
                                 src={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
                                 alt="Photos from photo album"
                                 width={400}

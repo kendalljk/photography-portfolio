@@ -2,7 +2,7 @@
 import { useParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
+//import Image from "next/image";
 import Masonry from "react-masonry-css";
 import { useSearchParams } from "next/navigation";
 
@@ -59,10 +59,11 @@ export default function Photo({ params }: PhotoProps) {
             {photo && (
                 <>
                     <div className="w-full mt-20 flex justify-center">
-                        <Image
-                            src={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
+                        <img
+                            src={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`}
                             alt="Photos from photo album"
-                            fill
+                            width={300}
+                            height={300}
                             style={{
                                 objectFit: "contain",
                             }}
