@@ -58,15 +58,10 @@ export default function Photo({ params }: PhotoProps) {
         <section className="w-full min-h-screen flex flex-col items-center justify-center">
             {photo && (
                 <>
-                    <div className="w-full mt-20 flex justify-center">
+                    <div className="max-h-screen mt-10 flex justify-center">
                         <img
                             src={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`}
                             alt="Photos from photo album"
-                            width={300}
-                            height={300}
-                            style={{
-                                objectFit: "contain",
-                            }}
                         />
                     </div>
                     {photo.dates.taken && <h3>{photo.dates.taken}</h3>}

@@ -2,7 +2,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 //import Image from "next/image";
-//import logo from "../../app/resources/Logo.png";
+
 
 function Navbar() {
     const pathname = usePathname();
@@ -12,7 +12,7 @@ function Navbar() {
                 <div>
                     <Link href="/" className="flex">
                         <img
-                            src='../../app/resources/Logo.png'
+                            src='/Logo.png'
                             alt="B photo logo"
                             height={30}
                             width={40}

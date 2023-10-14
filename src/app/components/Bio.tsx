@@ -29,7 +29,7 @@ const Bio = () => {
                 </div>
                 <div>
                     <img
-                        src='../../app/resources/BK.png'
+                        src='/BK.jpg'
                         alt="Brian Koch photographer photo"
                         width={600}
                         height={400}

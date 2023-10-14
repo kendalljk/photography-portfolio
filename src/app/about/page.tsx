@@ -10,7 +10,7 @@ export default function About() {
                     <img
                         className="m-auto rounded-full"
                         id="photographer-photo"
-                        src='../resources/BK.jpg'
+                        src='/BK.jpg'
                         alt="photographer photo"
                         width={300}
                         height={300}
