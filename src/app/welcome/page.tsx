@@ -63,9 +63,10 @@ const Welcome = () => {
             <div className="relative">
                 {currentPhoto && (
                     <img
-                        className="w-full h-screen block"
+                        className="w-full h-screen block object-cover"
                         src={`https://live.staticflickr.com/${currentPhoto.server}/${currentPhoto.id}_${currentPhoto.secret}_b.jpg`}
-                        alt="BK images carousel"
+              alt="carousel of photos taken by photographer, Brian Koch"
+
                     />
                 )}
             </div>

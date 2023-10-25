@@ -61,31 +61,33 @@ export default function Album({ params }: AlbumProps) {
     };
 
     return (
-        <section className="w-full min-h-screen flex flex-col items-center">
-            <h2 className="pt-20 text-xl mb-5">{title}</h2>
-            <Masonry
-                breakpointCols={breakpointColumnsObj}
-                className="my-masonry-grid flex w-auto"
-                columnClassName="my-masonry-grid_column"
-            >
-                {album.map((photo) => (
-                    <div key={photo.id} className="my-masonry-item m-2">
-                        <Link
-                            className="text-center font-semibold"
-                            href={{
-                                pathname: `/galleries/album/${photo.id}`,
-                            }}
-                        >
-                            <img
-                                src={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
-                                alt="Photos from photo album"
-                                width={400}
-                                height={200}
-                            />
-                        </Link>
-                    </div>
-                ))}
-            </Masonry>
+        <section className="min-h-screen flex flex-col items-center w-full">
+            <div className="w-full flex flex-wrap mx-auto justify-center pt-12">
+                <Masonry
+                    breakpointCols={breakpointColumnsObj}
+                    className="my-masonry-grid flex w-auto"
+                    columnClassName="my-masonry-grid_column"
+                >
+                    {album.map((photo) => (
+                        <div key={photo.id} className="my-masonry-item m-2">
+                            <Link
+                                className="text-center font-semibold"
+                                href={{
+                                    pathname: `/galleries/album/${photo.id}`,
+                                }}
+                            >
+                                <img
+                                    src={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_c.jpg`}
+                            alt="Photos from photo album"
+                            className="object-contain"
+                            height={200}
+                            loading="lazy"
+                                />
+                            </Link>
+                        </div>
+                    ))}
+                </Masonry>
+            </div>
             {hasMore && (
                 <button
                     onClick={loadMore}

@@ -52,9 +52,8 @@ export default function Galleries() {
     };
 
     return (
-        <section className="gallery-display min-h-screen flex flex-col items-center w-full">
-            <h2 className="pt-20 text-xl mb-5">Galleries</h2>
-            <div className="w-full flex flex-wrap mx-auto justify-center">
+        <section className="min-h-screen flex flex-col items-center w-full">
+            <div className="w-full flex flex-wrap mx-auto justify-center pt-12">
                 <Masonry
                     breakpointCols={breakpointColumnsObj}
                     className="my-masonry-grid flex w-auto"
@@ -77,7 +76,8 @@ export default function Galleries() {
                                         src={`https://live.staticflickr.com/${album.server}/${album.primary}_${album.secret}_c.jpg`}
                                         alt={album.title._content}
                                         width={500}
-                                        height={300}
+                              height={300}
+                              loading="lazy"
                                     />
                                     <h4 className="album-title">
                                         {album.title._content}

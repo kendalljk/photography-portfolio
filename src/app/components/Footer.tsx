@@ -4,8 +4,7 @@ import { GrMail } from 'react-icons/gr'
 const Footer = () => {
     return (
         <section
-            className="footer-display w-full flex flex-col bg-stone-300"
-            style={{ backgroundColor: "#7A8266" }}
+            className="footer-display w-full flex flex-col"
         >
             <div className="social-icons w-full flex justify-center mt-5">
                 <a
@@ -13,22 +12,20 @@ const Footer = () => {
                     className="m-5"
                 >
                     <FaFacebookSquare
-                        style={{ color: "white", fontSize: "25px" }}
                     />
                 </a>
                 <a href={`mailto:kendalljunekoch@gmail.com`} className="m-5">
-                    <GrMail style={{ color: "white", fontSize: "25px" }} />
+                    <GrMail/>
                 </a>
                 <a
                     href="https://flickr.com/photos/brian330inafrica"
                     className="m-5"
                 >
-                    <FaFlickr style={{ color: "white", fontSize: "25px" }} />
+                    <FaFlickr />
                 </a>
             </div>
-            <div className="text-center italic text-sm text-zinc-700 text-lg font-light my-5">
-                Copyright © Brian Koch Photography. Contents cannot be used in
-                any way without written permission
+            <div className="text-center italic text-xs text-zinc-700 text-lg font-light my-5">
+                Brian Koch Photography©
             </div>
         </section>
     );

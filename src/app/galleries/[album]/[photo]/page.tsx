@@ -1,10 +1,11 @@
 "use client";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 //import Image from "next/image";
 import Masonry from "react-masonry-css";
 import { useSearchParams } from "next/navigation";
+import { RiCloseCircleLine } from "react-icons/ri";
 
 interface Photo {
     farm: number;
@@ -30,6 +31,11 @@ export default function Photo({ params }: PhotoProps) {
     const [photo, setPhoto] = useState<Photo | null>(null);
     const [error, setError] = useState<string | null>(null);
     const searchParams = useSearchParams();
+    const router = useRouter();
+
+    const goBack = () => {
+        router.back();
+    };
 
     useEffect(() => {
         const fetchPhoto = async () => {
@@ -57,16 +63,18 @@ export default function Photo({ params }: PhotoProps) {
     return (
         <section className="w-full min-h-screen flex flex-col items-center justify-center">
             {photo && (
-                <>
-                    <div className="max-h-screen mt-10 flex justify-center">
-                        <img
-                            src={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`}
-                            alt="Photos from photo album"
-                        />
-                    </div>
-                    {photo.dates.taken && <h3>{photo.dates.taken}</h3>}
-                    <span className="italic ml-5">{photo.owner.realname}</span>
-                </>
+                <div className="max-h-screen mt-12 flex justify-center">
+                    <img
+                        src={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_b.jpg`}
+                        className="object-contain relative"
+                        alt="Photos from photo album"
+                        loading="lazy"
+                    />
+                    <RiCloseCircleLine
+                        className="relative top-0 left-12 text-4xl text-slate-800"
+                        onClick={() => goBack()}
+                    />
+                </div>
             )}
             {error && <div className="text-red-500">{error}</div>}
         </section>

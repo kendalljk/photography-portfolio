@@ -55,9 +55,9 @@ const RecentProjects = () => {
         fetchProjects();
     }, []);
     return (
-        <section className="w-full flex flex-col items-center py-20">
-            <h2>My Recent Projects</h2>
-            <div className="w-full flex justify-center">
+      <section className="w-full h-screen flex flex-col justify-center py-12">
+        <h1 className="mx-auto">Recent projects</h1>
+            <div className="w-full h-1/2 flex justify-center">
                 <button
                     onClick={handlePrevPage}
                     disabled={currentPage === 1}
@@ -68,17 +68,16 @@ const RecentProjects = () => {
                 {projects.slice(startIndex, endIndex).map((project) => (
                     <div
                         key={project.id}
-                        className="m-2 w-1/4 h-96 lg:w-1/5 md:h-120"
+                        className="m-2 w-1/4 h-full lg:w-1/5 font-semibold"
                     >
                         <div className="relative w-full h-full overflow-hidden ">
                             <Image
                                 src={`https://live.staticflickr.com/${project.server}/${project.primary}_${project.secret}_c.jpg`}
+                                className="object-cover"
                                 alt={project.title._content}
                                 fill
-                                sizes="w-1/4 h-96 lg:w-1/5 md:h-120"
-                                style={{
-                                    objectFit: "cover",
-                                }}
+                        sizes="w-1/4 h-full lg:w-1/5"
+                        loading="lazy"
                             />
                         </div>
                         <Link
@@ -87,7 +86,7 @@ const RecentProjects = () => {
                                 query: { title: project.title._content },
                             }}
                         >
-                            <h4 className="project-title truncate">
+                            <h4 className="truncate">
                                 {project.title._content}
                             </h4>
                         </Link>

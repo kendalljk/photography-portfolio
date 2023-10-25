@@ -30,10 +30,11 @@ const Bio = () => {
                 <div>
                     <img
                         src='/BK.jpg'
-                        alt="Brian Koch photographer photo"
+                        alt="Photographer, Brian Koch, leaning against railing with camera in hand"
                         width={600}
                         height={400}
-                        className="py-10"
+              className="py-10"
+              loading="lazy"
                     />
                 </div>
             </div>
