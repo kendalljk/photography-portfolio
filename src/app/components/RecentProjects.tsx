@@ -55,8 +55,8 @@ const RecentProjects = () => {
         fetchProjects();
     }, []);
     return (
-      <section className="w-full h-screen flex flex-col justify-center py-12">
-        <h1 className="mx-auto">Recent projects</h1>
+        <section className="w-full h-screen flex flex-col justify-center py-12">
+            <h1 className="mx-auto">Recent projects</h1>
             <div className="w-full h-1/2 flex justify-center">
                 <button
                     onClick={handlePrevPage}
@@ -71,13 +71,11 @@ const RecentProjects = () => {
                         className="m-2 w-1/4 h-full lg:w-1/5 font-semibold"
                     >
                         <div className="relative w-full h-full overflow-hidden ">
-                            <Image
+                            <img
                                 src={`https://live.staticflickr.com/${project.server}/${project.primary}_${project.secret}_c.jpg`}
                                 className="object-cover"
                                 alt={project.title._content}
-                                fill
-                        sizes="w-1/4 h-full lg:w-1/5"
-                        loading="lazy"
+                                sizes="w-1/4 h-full lg:w-1/5"
                             />
                         </div>
                         <Link
