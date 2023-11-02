@@ -71,7 +71,7 @@ export default function Photo({ params }: PhotoProps) {
                         loading="lazy"
                     />
                     <RiCloseCircleLine
-                        className="relative top-0 left-12 text-4xl text-slate-800"
+                        className="relative top-0 left-12 text-4xl text-slate-600 hover:cursor-pointer hover:text-slate-900"
                         onClick={() => goBack()}
                     />
                 </div>

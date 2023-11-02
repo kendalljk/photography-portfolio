@@ -11,11 +11,8 @@ interface Album {
 }
 
 const getRecents = async (req: NextApiRequest, res: NextApiResponse) => {
-  const title = req.query.title;
-  const page = Number(req.query.page) || 1;
-
   try {
-    const response = await fetch(`${FLICKR_API}?method=flickr.photosets.getList&api_key=${FLICKR_API_KEY}&user_id=${userId}&format=json&nojsoncallback=1&per_page=50&page=${page}`)
+    const response = await fetch(`${FLICKR_API}?method=flickr.photosets.getList&api_key=${FLICKR_API_KEY}&user_id=${userId}&format=json&nojsoncallback=1`)
 
     if (!response.ok) {
       throw new Error(`An error occurred: ${response.statusText}`);

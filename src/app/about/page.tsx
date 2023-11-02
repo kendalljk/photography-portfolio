@@ -1,21 +1,22 @@
+import Awards from "../components/Awards";
 import profilePhoto from "../resources/BK.jpg";
-//import Image from "next/image";
+import { FaAward, FaBookOpen } from "react-icons/fa";
+
 
 export default function About() {
     return (
-        <section className="about min-h-screen flex flex-col items-center py-20 overflow-auto">
-            <h2 className="pb-10 text-xl">About</h2>
+        <section className="min-h-screen flex flex-col items-center py-20 overflow-auto">
             <div className="w-2/3 flex lg:flex-row flex-col">
-                <div className="w-full lg:w-1/2">
+                <div className="w-full lg:w-1/2 flex flex-col">
                     <img
                         className="m-auto rounded-full"
                         id="photographer-photo"
-                        src='/BK.jpg'
+                        src="/BK.jpg"
                         alt="photographer photo"
                         width={300}
                         height={300}
                     />
-                    <div className="mt-5 text-center border p-5">
+                    <div className="">
                         <h2 className="underline">My Equipment</h2>
                         <details className="text-left">
                             <summary>Cameras/Lenses</summary>

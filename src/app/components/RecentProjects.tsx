@@ -70,20 +70,19 @@ const RecentProjects = () => {
                         key={project.id}
                         className="m-2 w-1/4 h-full lg:w-1/5 font-semibold"
                     >
-                        <div className="relative w-full h-full overflow-hidden ">
+                          <Link
+                              href={{
+                                  pathname: `/galleries/${project.id}`,
+                                  query: { title: project.title._content },
+                              }}
+                          >
+                        <div className="relative w-full h-full">
                             <img
                                 src={`https://live.staticflickr.com/${project.server}/${project.primary}_${project.secret}_c.jpg`}
-                                className="object-cover"
+                                className="object-cover h-full"
                                 alt={project.title._content}
-                                sizes="w-1/4 h-full lg:w-1/5"
                             />
                         </div>
-                        <Link
-                            href={{
-                                pathname: `/galleries/${project.id}`,
-                                query: { title: project.title._content },
-                            }}
-                        >
                             <h4 className="truncate">
                                 {project.title._content}
                             </h4>
